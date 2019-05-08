@@ -4,10 +4,11 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false, foreign_key: true|
+|nickname|string|null: false|
 |email|string|null: false, unique: true|
 
 ### Association 
+- has_many :members
 - has_many :messages
 - has many :groups, through: :members
 
@@ -18,11 +19,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|message_id|integer|null: false, foreign_key: true|
+|name|string|null: false|
 
 ### Association
+- has_many :members
 - has_many :messages
 - has_many :users, through: :members
 
