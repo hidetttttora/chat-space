@@ -1,0 +1,49 @@
+.flash-box testflashbox
+.wrapper
+  .chat-side
+    .side-header
+      %p.side-header__username test
+      %ul.side-lists
+        %li.lists
+          %a(href="/edit")
+            %i.fa.fa-cog 
+        
+        %li.lists
+          %a(href="/new")
+            %i.fa.fa-edit
+    .side-body
+      .groups
+        %a(href="/group/:id")
+          .group
+            %p.group-name samplegroup
+            %p.latest-message きなこもち2019:5:5
+        %a(href="/group/:id")
+          .group
+            %p.group-name samplegroup
+            %p.latest-message きなこもち2019:5:5
+  .chat-main
+    .main-header
+      .current-group
+        %h2.current-group__name testgroup
+        %ul.member-list
+          %li
+            Member：
+          %li
+            testmember1
+          %li
+            testmember2
+        %a(href="/group/:id/edit")
+          .main-header__edit-btn Edit
+    .border-line
+    .messages
+      .message
+        .upper
+          %p.upper__user XXX
+          %p.upper__date 2019/05/07(Tue) 14:17:03
+        %p.message__text これはテストテキストです
+    .form
+      %form.new-message(action="/groups/:id/messages")
+        %input(placeholder="  type a message")/
+        %label.image-label(for="message_image")
+          %i.fa.fa-image
+      %input.new-message__submit-btn{type: "submit", name: "comit", value: "Send"}/

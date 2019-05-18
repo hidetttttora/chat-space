@@ -1,0 +1,176 @@
+.flash-box {
+    background-color:  #38AEF0;
+    color: white;
+    font-size: 20px;
+    height: 30px;
+    text-align: center;
+}
+.wrapper {
+    position: relative;
+    .chat-side {
+        box-sizing: border-box;
+        .side-header{
+            position: relative;
+            color: white;
+            background-color:  #253241;
+            height: 100px;
+            width: 300px;
+            p {
+                position: absolute;
+                top: 40%;
+                left: 20px;
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .side-lists {
+                position: absolute;
+                top: 40%;
+                right: 20px;
+               li {
+                float: right;
+                    .fa {
+                        color: white;
+                        margin-left: 2px;
+                    }
+                }        
+            }
+        }
+        .side-body {
+            position: relative;
+            color: white;
+            background-color: #2f3e51;
+            height: calc(100vh - 100px);
+            width: 300px;
+            .groups{
+                padding: 20px 20px 0;
+                overflow: scroll;
+                a {
+                    text-decoration: none;
+                    .group {
+                        color: white;
+                        .group-name {
+                            padding: 20px 0 5px;
+                            font-size: 15px;
+                        }
+                        .latest-message {
+                            padding: 0 0 40px;
+                            font-size: 11px
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .chat-main {
+        position: absolute;
+        background-color: white;
+        width: calc(100vw - 300px);
+        box-sizing: border-box;
+        top: 0;
+        right: 0;
+        .main-header {
+            position: relative;
+            height: 100px;
+            padding: 0 40px;
+            .current-group{
+                h2 {
+                    color: #333;
+                    font-size: 20px;
+                    padding: 35px 0 15px;
+                }
+                ul {
+                    li{
+                        font-size: 12px;
+                        color: #999;
+                        float: left;
+                        padding-right: 3px;
+                    }
+                }
+                a {
+                    text-decoration: none;
+                    color: #38AEF0;
+                    .main-header__edit-btn {
+                        font-size: 18px;
+                        position: absolute;
+                        top: 30%;
+                        right: 0px;
+                        padding: 5px 20px;
+                        margin: 0 40px 0 0;
+                        border: solid 1px #38AEF0;
+                    }
+                }
+            }
+        }
+        .border-line {
+            border-top: solid 1px #eee;
+        }
+        .messages {
+            background-color: #fafafa;
+            height: calc(100vh - 190px);
+            padding: 46px 40px;
+            box-sizing: border-box;
+            overflow: scroll;
+            .message {
+                .upper{
+                    display: -webkit-inline-flex;
+                    &__user {
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #333;
+                    } 
+                    &__date {
+                        font-size: 12px;
+                        color: #999;
+                        padding-left: 10px;
+                    }
+                    p {
+                        display: inline;
+                    }
+                }
+                .message__text {
+                    font-size: 14px;
+                    color: #434A54;
+                }
+            }
+        }
+        .form {
+            background-color: #dcdcdc;
+            height: 90px;
+            padding: 0 40px;
+            box-sizing: border-box;
+            position: relative;
+            .new-message {
+                position: relative;
+                input {
+                    font-size: 16px;
+                    border: none;
+                    position: relative;
+                    height: 50px;
+                    width: calc(80vw - 205px);
+                    margin-top: 22px;
+                }
+                label {
+                    i {
+                        position: absolute; 
+                        top: 53%;
+                        right: 15%;
+                        font-size: 1.3em;
+                    }
+                }
+                &__submit-btn {
+                    color: white;
+                    background-color: #38AEF0;
+                    box-sizing: border-box;
+                    font-size: 15px;
+                    position: absolute;
+                    height: 50px;
+                    width: 100px;
+                    right: 40px;
+                    top: 22px;
+                    margin-left: 15px;
+                }
+            }
+        }
+    }
+    
+}
