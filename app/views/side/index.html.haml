@@ -5,22 +5,15 @@
       %p.side-header__username test
       %ul.side-lists
         %li.lists
-          %a(href="/edit")
+          = link_to 'http://google.co.jp' do
             %i.fa.fa-cog 
         
         %li.lists
-          %a(href="/new")
+          = link_to 'http://google.co.jp' do
             %i.fa.fa-edit
     .side-body
       .groups
-        %a(href="/group/:id")
-          .group
-            %p.group-name samplegroup
-            %p.latest-message きなこもち2019:5:5
-        %a(href="/group/:id")
-          .group
-            %p.group-name samplegroup
-            %p.latest-message きなこもち2019:5:5
+        = render "group"  
   .chat-main
     .main-header
       .current-group
@@ -32,15 +25,11 @@
             testmember1
           %li
             testmember2
-        %a(href="/group/:id/edit")
+        = link_to 'http://google.co.jp' do
           .main-header__edit-btn Edit
     .border-line
     .messages
-      .message
-        .upper
-          %p.upper__user XXX
-          %p.upper__date 2019/05/07(Tue) 14:17:03
-        %p.message__text これはテストテキストです
+      = render "message"
     .form
       %form.new-message(action="/groups/:id/messages")
         %input(placeholder="  type a message")/
