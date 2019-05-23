@@ -1,14 +1,15 @@
-.flash-box testflashbox
+
 .wrapper
   .chat-side
     .side-header
-      %p.side-header__username test
+      %p.side-header__username
+        = current_user.name
       %ul.side-lists
         %li.lists
           = link_to 'http://google.co.jp' do
             %i.fa.fa-cog  
         %li.lists
-          = link_to 'http://google.co.jp' do
+          = link_to edit_user_path(current_user) do
             %i.fa.fa-edit
     .side-body
       .groups
