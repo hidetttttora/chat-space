@@ -1,0 +1,10 @@
+.side-header
+  %p.side-header__username
+    = current_user.name
+  %ul.side-lists
+    %li.lists
+      = link_to edit_user_path(current_user) do
+        %i.fa.fa-cog  
+    %li.lists
+      = link_to new_group_path do
+        %i.fa.fa-edit
