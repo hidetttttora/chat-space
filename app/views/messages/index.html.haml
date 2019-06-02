@@ -1,0 +1,13 @@
+.wrapper
+  .chat-side
+    = render 'side_top'
+    .side-body
+      .groups
+        = render 'side_groups'
+  .chat-main
+    .main-header
+      = render 'main_header'
+    .messages
+      = render @messages
+    .form
+      = render 'main_footer'
