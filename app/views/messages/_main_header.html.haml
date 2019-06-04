@@ -2,7 +2,7 @@
   %h2.current-group__name
     = @group.name
   .member-list
-    - @members.each do |member|
+    - @members.each do | member |
       =member.name
   .main-header__edit-btn
     = link_to "Edit", edit_group_path(params[:group_id]), method: :get
