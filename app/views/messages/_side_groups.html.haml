@@ -1,7 +1,7 @@
-- current_user.groups.each do |group|
-  .group
+.group
+  - current_user.groups.each do |group|
     = link_to group_messages_path(group) do
       .group-name
         = group.name
       .latest-message 
-        メッセージはまだありません。
+        = group.messages.last.nil? ? "メッセージはありません" : group.messages.last.content

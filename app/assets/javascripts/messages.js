@@ -1,5 +1,6 @@
 $(function(){
-　 function buildHTML(message){
+
+  function buildHTML(message){
     var content = message.content ? `${ message.content }` : "";
     var img = message.image ? `<img src= ${ message.image }>` : "";
     var html =
@@ -21,6 +22,13 @@ $(function(){
       </div>`
   return html;
 }
+
+  function appendNoUser(user){
+    var html = `<div class='chat-group-user clearfix'>${ user }</div>`
+    search_list.append(html);
+}
+
+
   $('#new_message').on('submit',function(e){
     e.preventDefault();
     var message = new FormData(this);
