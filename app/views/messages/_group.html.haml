@@ -1,0 +1,5 @@
+= link_to group_messages_path(group) do
+  .group-name
+    = group.name
+  .latest-message 
+    = group.messages.last.nil? ? "メッセージはありません" : group.messages.last.content
