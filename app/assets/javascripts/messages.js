@@ -43,7 +43,7 @@ $(function(){
     .done(function(message){ 
       var html = buildHTML(message); // メッセージを追加準備
       $('.messages').append(html); // 追加
-      $('#message_content').val('');   //テキストフィールド空
+      $('#new_message')[0].reset();   //テキストフィールド空
       $('.form__submit').prop('disabled', false);  //送信ボタン有効
       scroll();
     })
@@ -58,7 +58,6 @@ $(function(){
   var interval = setInterval(function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
       var last_message_id = $('.message').last().data('id') || 0 
-      console.log(last_message_id);
       var href = 'api/messages'
       $.ajax({
         url: href,
