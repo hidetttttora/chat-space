@@ -4,7 +4,7 @@ $(function(){
     var content = message.content ? `${ message.content }` : "";
     var img = message.image ? `<img src= ${ message.image }>` : "";
     var html =
-    `<div class="message">
+    `<div class="message" data-id="${message.id}">
         <div class="upper">
           <p class="upper__user">
             ${ message.name }
@@ -20,44 +20,63 @@ $(function(){
         </div>
         ${ img }
       </div>`
-  return html;
-}
+    return html;
+  }
 
-  function appendNoUser(user){
-    var html = `<div class='chat-group-user clearfix'>${ user }</div>`
-    search_list.append(html);
-}
+  function scroll(){
+    $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast')
+  }
 
-
-  $('#new_message').on('submit',function(e){
+  $('#new_message').on('submit',function(e) {
     e.preventDefault();
-    var message = new FormData(this);
-    var url = $(this).attr('action')
+    var formdata = new FormData($(this).get(0));
+    var api_url = window.location.pathname;
     $.ajax({
-      url: url,
+      url: api_url,
       type: "POST",
-      data: message,
+      data: formdata,
       dataType: 'json',
       processData: false,
       contentType: false
     })
-    .done(function(data){
-        var html = buildHTML(data);
-        $('.messages').append(html);
-        $('form')[0].reset();
-      function scrollBottom(){
-          var target = $('.message').last();
-          var position = target.offset().top + $('.messages').scrollTop();
-          $('.messages').animate({
-            scrollTop: position
-          }, 300, 'swing');
-        }    
+
+    .done(function(message){ 
+      var html = buildHTML(message); // メッセージを追加準備
+      $('.messages').append(html); // 追加
+      $('#new_message')[0].reset();   //テキストフィールド空
+      $('.form__submit').prop('disabled', false);  //送信ボタン有効
+      scroll();
     })
-    .fail(function(data){
+
+    .fail(function(){
       alert('エラーが発生したためメッセージは送信できませんでした。');
     })
-    .always(function(data){
-      $('.submit-btn').prop('disabled', false);
-    })
   })
+
+  
+  
+  var interval = setInterval(function() {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+      var last_message_id = $('.message').last().data('id') || 0 
+      var href = 'api/messages'
+      $.ajax({
+        url: href,
+        type: "GET",
+        data: {id: last_message_id},
+        dataType: "json"
+      })
+      .done(function(messages) {
+        messages.forEach(function(message) {
+          var insertHTML = buildHTML(message)
+          $('.messages').append(insertHTML)
+          scroll();
+        })
+      })
+      .fail(function() {
+        alert('自動更新に失敗しました');
+      })
+    } else {
+        clearInterval(interval);
+      }
+  } , 5000);
 })
