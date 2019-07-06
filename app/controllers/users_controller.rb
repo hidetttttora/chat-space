@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @users = User.where('name LIKE(?) and id !=(?)', "%#{params[:keyword]}%", current_user.id)
     respond_to do |format|
       format.html
-      format.json
+      format.json #送られてきたリクエストをjson形式で送る
     end
   end
 

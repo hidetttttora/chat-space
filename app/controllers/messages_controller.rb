@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
     if @message.save
       respond_to do |format|
         format.html { redirect_to group_messages_path(@group), notice: 'メッセージが送信されました' }
-        format.json
+        format.json # respond_toで「format」に代入してhtmlとjsonに送る処理 → ここで定義した変数を該当のjson.jbuilderに送り変換する。
       end
     else
       @messages = @group.messages.includes(:user)
