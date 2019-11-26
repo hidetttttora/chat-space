@@ -14,7 +14,7 @@ $(function() {
       var html = `<div class='chat-group-user clearfix'>${ user }</div>`
       search_list.append(html);
     }
- 
+
 　 var member_list = $("#chat-group-users");
 
     function addUser(userId,userName) {
